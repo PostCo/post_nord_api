@@ -1,24 +1,171 @@
-# PostnordApi
+# PostNord Ruby Gem
 
-TODO: Delete this and the text below, and describe your gem
+A Ruby wrapper for the PostNord API that provides simple access to booking return and tracking shipment.
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/postnord_api`. To experiment with that code, run `bin/console` for an interactive prompt.
+## Features
+
+- **Return Booking**: Create return shipment using EDI formatting
+- **Shipment Tracking**: Track shipment by identifier
 
 ## Installation
 
-TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. Alternatively, replace this section with instructions to install your gem from git if you don't plan to release to RubyGems.org.
+Add this line to your application's Gemfile:
 
-Install the gem and add to the application's Gemfile by executing:
+```ruby
+gem 'postnord_api'
+```
 
-    $ bundle add UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
+And then execute:
 
-If bundler is not being used to manage dependencies, install the gem by executing:
+    $ bundle install
 
-    $ gem install UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
+Or install it yourself as:
+
+    $ gem install postnord_api
 
 ## Usage
 
-TODO: Write usage instructions here
+### Intialize a Postnord API client
+
+- For production usage:
+
+```ruby
+client = PostnordAPI::Client.new(api_key: "api_key")
+```
+
+- For development usage:
+
+```ruby
+client = PostnordAPI::Client.new(api_key: "api_key", test_mode: true)
+```
+
+### Create Return Shipmemt
+
+```ruby
+begin
+   client = PostnordAPI::Client.new(api_key: "api_key")
+   params = {
+      "messageDate": '2025-09-23T11:40:52Z',
+      "messageFunction": 'Instruction',
+      "messageId": 'msg-18272155',
+      "application": {
+        "applicationId": 1438,
+        "name": 'PostNord',
+        "version": '1.0'
+      },
+      "language": 'EN',
+      "updateIndicator": 'Original',
+      "shipment": [
+        {
+          "shipmentIdentification": {
+            "shipmentId": '0'
+          },
+          "dateAndTimes": {
+            "loadingDate": '2020-11-29T11:13:00'
+          },
+          "service": {
+            "basicServiceCode": '24',
+            "additionalServiceCode": []
+          },
+          "numberOfPackages": {
+            "value": 1
+          },
+          "totalGrossWeight": {
+            "value": 5.23,
+            "unit": 'KGM'
+          },
+          "references": [
+            {
+              "referenceNo": '61G33IGAPTVZPY5',
+              "referenceType": 'CU'
+            }
+          ],
+          "parties": {
+            "consignor": {
+              "issuerCode": 'Z12',
+              "partyIdentification": {
+                "partyId": '1111111111',
+                "partyIdType": '160'
+              },
+              "party": {
+                "nameIdentification": {
+                  "name": 'CONSIGNOR'
+                },
+                "address": {
+                  "streets": [
+                    'Terminalvägen 14'
+                  ],
+                  "postalCode": '17173',
+                  "city": 'solna',
+                  "countryCode": 'SE'
+                },
+                "contact": {
+                  "contactName": 'Consignor',
+                  "emailAddress": 'Consignor@me.com',
+                  "phoneNo": '+46071111111',
+                  "smsNo": '+46071111111'
+                }
+              }
+            },
+            "consignee": {
+              "party": {
+                "nameIdentification": {
+                  "name": 'Consignee'
+                },
+                "address": {
+                  "streets": [
+                    'Östermalmsgatan 87D'
+                  ],
+                  "postalCode": '11459',
+                  "city": 'STOCKHOLM',
+                  "countryCode": 'SE'
+                },
+                "contact": {
+                  "contactName": 'Consignee',
+                  "emailAddress": 'Consignee@me.com',
+                  "phoneNo": '+46071111111',
+                  "smsNo": '+46071111111'
+                }
+              }
+            }
+          },
+          "goodsItem": [
+            {
+              "marking": 'Description of the commodities',
+              "goodsDescription": 'goodsDescription',
+              "packageTypeCode": 'PC',
+              "items": [
+                {
+                  "itemIdentification": {
+                    "itemId": '0'
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+
+  client.shipment.create_return_label(params)
+  # The result contains the label data, QR code data and tracking URL.
+
+rescue PostnordAPI::Error => e
+  puts "Error creating return shipment: #{e.message}"
+end
+```
+
+### Track Shipment
+
+```ruby
+begin
+  # Track shipment by identifier
+  client.shipment.track("1234567890")
+
+rescue PostnordAPI::APIError => e
+  puts "Tracking failed: #{e.message}"
+end
+```
 
 ## Development
 
@@ -28,7 +175,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/postnord_api. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/postnord_api/blob/main/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/PostCo/postnord_api. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/postnord_api/blob/main/CODE_OF_CONDUCT.md).
 
 ## License
 
