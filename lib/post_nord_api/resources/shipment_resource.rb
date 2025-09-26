@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module PostnordAPI
+module PostNordAPI
   class ShipmentResource < BaseResource
     def create_return_label(params)
       response = post_request("shipment/v3/returns/edi/labels/zpl", body: params)

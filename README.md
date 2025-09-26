@@ -12,7 +12,7 @@ A Ruby wrapper for the PostNord API that provides simple access to booking retur
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'postnord_api'
+gem 'post_nord_api'
 ```
 
 And then execute:
@@ -21,7 +21,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install postnord_api
+    $ gem install post_nord_api
 
 ## Usage
 
@@ -30,20 +30,20 @@ Or install it yourself as:
 - For production usage:
 
 ```ruby
-client = PostnordAPI::Client.new(api_key: "api_key")
+client = PostNordAPI::Client.new(api_key: "api_key")
 ```
 
 - For development usage:
 
 ```ruby
-client = PostnordAPI::Client.new(api_key: "api_key", test_mode: true)
+client = PostNordAPI::Client.new(api_key: "api_key", test_mode: true)
 ```
 
 ### Create Return Shipmemt
 
 ```ruby
 begin
-   client = PostnordAPI::Client.new(api_key: "api_key")
+   client = PostNordAPI::Client.new(api_key: "api_key")
    params = {
       "messageDate": '2025-09-23T11:40:52Z',
       "messageFunction": 'Instruction',
@@ -150,7 +150,7 @@ begin
   client.shipment.create_return_label(params)
   # The result contains the label data, QR code data and tracking URL.
 
-rescue PostnordAPI::Error => e
+rescue PostNordAPI::Error => e
   puts "Error creating return shipment: #{e.message}"
 end
 ```
@@ -162,7 +162,7 @@ begin
   # Track shipment by identifier
   client.shipment.track("1234567890")
 
-rescue PostnordAPI::APIError => e
+rescue PostNordAPI::APIError => e
   puts "Tracking failed: #{e.message}"
 end
 ```
@@ -175,7 +175,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/PostCo/postnord_api. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/postnord_api/blob/main/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/PostCo/post_nord_api. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/post_nord_api/blob/main/CODE_OF_CONDUCT.md).
 
 ## License
 
@@ -183,4 +183,4 @@ The gem is available as open source under the terms of the [MIT License](https:/
 
 ## Code of Conduct
 
-Everyone interacting in the PostnordApi project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/postnord_api/blob/main/CODE_OF_CONDUCT.md).
+Everyone interacting in the PostnordApi project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/post_nord_api/blob/main/CODE_OF_CONDUCT.md).

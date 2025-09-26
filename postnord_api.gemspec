@@ -1,22 +1,22 @@
 # frozen_string_literal: true
 
-require_relative 'lib/postnord_api/version'
+require_relative 'lib/post_nord_api/version'
 
 Gem::Specification.new do |spec|
-  spec.name = 'postnord_api'
-  spec.version = PostnordAPI::VERSION
+  spec.name = 'post_nord_api'
+  spec.version = PostNordAPI::VERSION
   spec.authors = ['Linh']
   spec.email = ['hplinh0702@gmail.com']
 
   spec.summary = 'Postnord API Wrapper'
-  spec.homepage = 'https://github.com/Postco/postnord_api'
+  spec.homepage = 'https://github.com/Postco/post_nord_api'
   spec.license = 'MIT'
   spec.required_ruby_version = '>= 3.0.0'
 
   # spec.metadata['allowed_push_host'] = "TODO: Set to your gem server 'https://example.com'"
 
   spec.metadata['homepage_uri'] = spec.homepage
-  spec.metadata['source_code_uri'] = 'https://github.com/Postco/postnord_api'
+  spec.metadata['source_code_uri'] = 'https://github.com/Postco/post_nord_api'
   # spec.metadata['changelog_uri'] = "TODO: Put your gem's CHANGELOG.md URL here."
 
   # Specify which files should be added to the gem when it is released.

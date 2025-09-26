@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module PostnordAPI
+module PostNordAPI
   class Error < StandardError; end
   class BadRequestError < Error; end
   class ForbiddenError < Error; end

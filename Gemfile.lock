@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    postnord_api (0.1.0)
+    post_nord_api (0.1.0)
       activesupport
       faraday (~> 2.7)
       faraday-encoding
@@ -108,7 +108,7 @@ PLATFORMS
 
 DEPENDENCIES
   dotenv
-  postnord_api!
+  post_nord_api!
   pry
   rake (~> 13.0)
   rspec
