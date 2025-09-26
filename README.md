@@ -45,99 +45,99 @@ client = PostNordAPI::Client.new(api_key: "api_key", test_mode: true)
 begin
    client = PostNordAPI::Client.new(api_key: "api_key")
    params = {
-      "messageDate": '2025-09-23T11:40:52Z',
-      "messageFunction": 'Instruction',
-      "messageId": 'msg-18272155',
+      "message_date": '2025-09-23T11:40:52Z',
+      "message_function": 'Instruction',
+      "message_id": 'msg-18272155',
       "application": {
-        "applicationId": 1438,
+        "application_id": 1438,
         "name": 'PostNord',
         "version": '1.0'
       },
       "language": 'EN',
-      "updateIndicator": 'Original',
+      "update_indicator": 'Original',
       "shipment": [
         {
-          "shipmentIdentification": {
-            "shipmentId": '0'
+          "shipment_identification": {
+            "shipment_id": '0'
           },
-          "dateAndTimes": {
-            "loadingDate": '2020-11-29T11:13:00'
+          "date_and_times": {
+            "loading_date": '2020-11-29T11:13:00'
           },
           "service": {
-            "basicServiceCode": '24',
-            "additionalServiceCode": []
+            "basic_service_code": '24',
+            "additional_service_code": []
           },
-          "numberOfPackages": {
+          "number_of_packages": {
             "value": 1
           },
-          "totalGrossWeight": {
+          "total_gross_weight": {
             "value": 5.23,
             "unit": 'KGM'
           },
           "references": [
             {
-              "referenceNo": '61G33IGAPTVZPY5',
-              "referenceType": 'CU'
+              "reference_no": '61G33IGAPTVZPY5',
+              "reference_type": 'CU'
             }
           ],
           "parties": {
             "consignor": {
-              "issuerCode": 'Z12',
-              "partyIdentification": {
-                "partyId": '1111111111',
-                "partyIdType": '160'
+              "issuer_code": 'Z12',
+              "party_identification": {
+                "party_id": '1111111111',
+                "party_id_type": '160'
               },
               "party": {
-                "nameIdentification": {
+                "name_identification": {
                   "name": 'CONSIGNOR'
                 },
                 "address": {
                   "streets": [
                     'Terminalvägen 14'
                   ],
-                  "postalCode": '17173',
+                  "postal_code": '17173',
                   "city": 'solna',
-                  "countryCode": 'SE'
+                  "country_code": 'SE'
                 },
                 "contact": {
-                  "contactName": 'Consignor',
-                  "emailAddress": 'Consignor@me.com',
-                  "phoneNo": '+46071111111',
-                  "smsNo": '+46071111111'
+                  "contact_name": 'Consignor',
+                  "email_address": 'Consignor@me.com',
+                  "phone_no": '+46071111111',
+                  "sms_no": '+46071111111'
                 }
               }
             },
             "consignee": {
               "party": {
-                "nameIdentification": {
+                "name_identification": {
                   "name": 'Consignee'
                 },
                 "address": {
                   "streets": [
                     'Östermalmsgatan 87D'
                   ],
-                  "postalCode": '11459',
+                  "postal_code": '11459',
                   "city": 'STOCKHOLM',
-                  "countryCode": 'SE'
+                  "country_code": 'SE'
                 },
                 "contact": {
-                  "contactName": 'Consignee',
-                  "emailAddress": 'Consignee@me.com',
-                  "phoneNo": '+46071111111',
-                  "smsNo": '+46071111111'
+                  "contact_name": 'Consignee',
+                  "email_address": 'Consignee@me.com',
+                  "phone_no": '+46071111111',
+                  "sms_no": '+46071111111'
                 }
               }
             }
           },
-          "goodsItem": [
+          "goods_item": [
             {
               "marking": 'Description of the commodities',
-              "goodsDescription": 'goodsDescription',
-              "packageTypeCode": 'PC',
+              "goods_description": 'goodsDescription',
+              "package_type_code": 'PC',
               "items": [
                 {
-                  "itemIdentification": {
-                    "itemId": '0'
+                  "item_identification": {
+                    "item_id": '0'
                   }
                 }
               ]

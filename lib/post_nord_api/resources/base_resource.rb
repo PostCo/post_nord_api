@@ -42,6 +42,11 @@ module PostNordAPI
       end
     end
 
+    def parse_params(params)
+      # Convert { snake_case_key: value } to { snakeCaseKey: value }
+      params.deep_transform_keys { |key| key.to_s.camelize(:lower) }
+    end
+
     private
 
     def extract_error_message(body)
