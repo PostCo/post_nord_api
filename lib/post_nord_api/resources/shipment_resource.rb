@@ -3,7 +3,7 @@
 module PostNordAPI
   class ShipmentResource < BaseResource
     def create_return_label(params)
-      response = post_request('shipment/v3/returns/edi/labels/zpl', body: parse_params(params))
+      response = post_request('shipment/v3/returns/edi/labels/pdf', body: parse_params(params))
       Booking.new(response.body)
     end
 
