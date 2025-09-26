@@ -3,7 +3,7 @@
 require 'faraday'
 require 'faraday/net_http'
 
-module PostnordAPI
+module PostNordAPI
   class Client
     BASE_URL = 'https://api2.postnord.com/rest'
     SANDBOX_BASE_URL = 'https://atapi2.postnord.com/rest'
