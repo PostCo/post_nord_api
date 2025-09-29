@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    post_nord_api (0.1.2)
+    post_nord_api (0.1.3)
       activesupport
       faraday (~> 2.7)
       faraday-encoding
