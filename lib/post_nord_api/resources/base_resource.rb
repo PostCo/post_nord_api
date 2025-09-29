@@ -32,13 +32,13 @@ module PostNordAPI
 
       case response.status
       when 400
-        raise Error, "A bad request or a validation exception has occurred. #{error_message}"
+        raise Error.new("A bad request or a validation exception has occurred. #{error_message}", response)
       when 403
-        raise ForbiddenError, "Invalid API key. #{error_message}"
+        raise ForbiddenError.new("Invalid API key. #{error_message}", response)
       when 429
-        raise RateLimitError, "The API rate limit for your application has been exceeded. #{error_message}"
+        raise RateLimitError.new("The API rate limit for your application has been exceeded. #{error_message}", response)
       when 500
-        raise ServerError, "An unhandled error with the PostNord API. #{error_message}"
+        raise ServerError.new("An unhandled error with the PostNord API. #{error_message}", response)
       end
     end
 
